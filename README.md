@@ -2,25 +2,31 @@
 
 This repository presents a rigorous and formally structured exposition of Linear Algebra, developed with emphasis on its role in Quantum Theory and Quantum Computing.
 
-The material progresses from algebraic and vector space foundations to inner product spaces, Hilbert spaces, and the mathematical formalism underlying quantum state representations.
+The material progresses from algebraic foundations to Hilbert spaces and the operator framework underlying quantum state representations.
+
+---
 
 ## Scope
 
-The repository covers:
+The repository includes formal treatment of:
 
 * Algebraic structures and fields
-* Complex vector spaces
-* Linear transformations and matrix representations
-* Inner product spaces and induced norms
-* Orthogonality and projections
-* Completeness and Hilbert spaces
+* Complex numbers and scalar systems
+* Vector spaces and subspaces
+* Linear transformations
+* Matrix representations
+* Inner product spaces
+* Norms and orthogonality
+* Hilbert spaces and completeness
 * Infinite-dimensional vector spaces
 * Bra–ket notation and dual spaces
 * Tensor product constructions
 
+---
+
 ## Mathematical Style
 
-All documents are written in formal mathematical language using LaTeX, with clearly separated:
+All content is written in LaTeX using formal mathematical exposition, including:
 
 * Definitions
 * Theorems
@@ -28,21 +34,28 @@ All documents are written in formal mathematical language using LaTeX, with clea
 * Examples
 * Remarks
 
+---
+
+## Acknowledgment
+
+The conceptual foundations and intuitive understanding for much of this material were developed through the lecture series of **Rajan Chopra**. His pedagogical clarity in Linear Algebra and Quantum Mathematics has been instrumental in shaping the author’s learning pathway.
+
+---
+
 ## Motivation
 
-Linear Algebra forms the mathematical backbone of quantum mechanics. State spaces, observables, and quantum transformations are naturally expressed in the language of Hilbert spaces and linear operators.
+Linear Algebra forms the mathematical backbone of quantum mechanics. Quantum states, observables, and transformations are naturally expressed using Hilbert spaces and linear operators.
 
-This repository aims to build that structure from first principles.
+This repository builds that mathematical machinery from first principles.
 
-## Target Audience
-
-* Research supervisors
-* Graduate admissions committees
-* Professors in Mathematics & Physics
-* Quantum Computing researchers
+---
 
 ## Author
 
-Sakinah Faiza Hussain
+**Sakinah Hussain**
 
-Independent Research Scholar — Mathematical Foundations for Machine Learning & Quantum Systems
+Independent Research Scholar
+
+Mathematical Foundations for Machine Learning & Quantum Systems
+
+---
