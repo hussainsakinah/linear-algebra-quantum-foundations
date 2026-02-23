@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper]{book}
+\documentclass[12pt, a4paper, openany]{book}
 
 %----------------------------------------------------------
 % PACKAGES
@@ -49,13 +49,9 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\inv}{^{-1}}
-\newcommand{\dagger}{\dag}
 \newcommand{\conj}[1]{\overline{#1}}
-\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
-\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\inner}[2]{\left\langle #1 \,\middle|\, #2 \right\rangle}
 \newcommand{\outerp}[2]{\left| #1 \middle\rangle\!\middle\langle #2 \right|}
-\newcommand{\Tr}{\operatorname{Tr}}
 \newcommand{\spanset}{\operatorname{span}}
 
 % Coloured box for key results
@@ -73,10 +69,10 @@
 %----------------------------------------------------------
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[RE]{\nouppercase{\leftmark}}
 \fancyhead[LO]{\nouppercase{\rightmark}}
+\fancyfoot[C]{\small\textit{Sakinah Faiza Hussain \textendash\ Mathematics for Quantum Computing}}
 \renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
 
 %----------------------------------------------------------
 % HYPERREF SETUP
@@ -97,7 +93,8 @@
   \textbf{\Huge Mathematics for Quantum Computing}\\[0.5em]
   \large A Structured Reference from Lecture Notes
 }
-\author{}
+
+\author{Sakinah Faiza Hussain}
 \date{\today}
 
 %==========================================================
@@ -107,7 +104,7 @@
 \maketitle
 
 \tableofcontents
-\newpage
+\clearpage
 
 %----------------------------------------------------------
 % CHAPTERS
