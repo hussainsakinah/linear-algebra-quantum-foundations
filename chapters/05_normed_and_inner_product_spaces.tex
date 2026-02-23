@@ -1,0 +1,162 @@
+\chapter{Normed Spaces and Inner Product Spaces}
+
+The progression \textbf{Vector Space} $\subset$ \textbf{Normed Space}
+$\subset$ \textbf{Inner Product Space} $\subset$ \textbf{Hilbert Space}
+adds richer geometric structure at each step.
+
+%==========================================================
+\section{Normed Spaces}
+%==========================================================
+
+A vector space has no built-in notion of length or distance.  A norm supplies
+both.
+
+\begin{definition}[Norm]
+  Let $V$ be a vector space over $F \in \{\R, \C\}$.  A \emph{norm} on $V$
+  is a function $\norm{\cdot}: V \to \R_{\geq 0}$ satisfying, for all
+  $\mathbf{u},\mathbf{v}\in V$ and $a\in F$:
+  \begin{enumerate}[label=\textbf{N\arabic*.}]
+    \item \textbf{Non-negativity:} $\norm{\mathbf{u}} \geq 0$, and
+          $\norm{\mathbf{u}}=0 \iff \mathbf{u}=\mathbf{0}$.
+    \item \textbf{Homogeneity:} $\norm{a\mathbf{u}} = |a|\,\norm{\mathbf{u}}$.
+    \item \textbf{Triangle inequality:} $\norm{\mathbf{u}+\mathbf{v}}
+          \leq \norm{\mathbf{u}} + \norm{\mathbf{v}}$.
+  \end{enumerate}
+  The pair $(V, \norm{\cdot})$ is a \emph{normed space}.
+\end{definition}
+
+\begin{remark}
+  The norm assigns a non-negative real number to each vector (its
+  ``length''), but without an inherent notion of actual physical distance or
+  angle between vectors.  The norm also induces a metric:
+  \[
+    d(\mathbf{u},\mathbf{v}) \coloneqq \norm{\mathbf{u}-\mathbf{v}}.
+  \]
+\end{remark}
+
+%==========================================================
+\section{Inner Product Spaces}
+%==========================================================
+
+\begin{definition}[Inner Product]\label{def:inner-product}
+  Let $V$ be a vector space over $F$.  An \emph{inner product} is a map
+  $\langle\cdot,\cdot\rangle: V\times V \to F$ (producing only
+  non-negative real outputs when both arguments coincide) satisfying:
+  \begin{enumerate}[label=\textbf{IP\arabic*.}]
+    \item \textbf{Linearity in the first argument:}
+          $\langle ax_1 + bx_2,\, y \rangle = a\langle x_1, y\rangle
+           + b\langle x_2, y\rangle$.
+    \item \textbf{Conjugate symmetry:}
+          $\langle x, y\rangle = \overline{\langle y, x\rangle}$.
+    \item \textbf{Positive definiteness:}
+          $\langle x,x\rangle \geq 0$, and $\langle x,x\rangle = 0 \iff x = 0$.
+  \end{enumerate}
+  The pair $(V,\langle\cdot,\cdot\rangle)$ is an \emph{inner product space}
+  (IPS).
+\end{definition}
+
+\begin{remark}
+  Geometrically, the inner product $\langle x,y\rangle$ encodes how much $x$
+  ``points in the direction of'' $y$ and how their magnitudes contribute to
+  their alignment.  In physics it is often written
+  $\vec{A}\cdot\vec{B} = |\vec{A}||\vec{B}|\cos\theta$.
+\end{remark}
+
+\subsection{Norm Induced by the Inner Product}
+
+\begin{proposition}
+  Every inner product induces a norm by
+  \[
+    \norm{x} \coloneqq \sqrt{\langle x, x\rangle}.
+  \]
+\end{proposition}
+
+\begin{example}
+  For $\vec{A}$ pointing along itself,
+  $\vec{A}\cdot\vec{A} = |\vec{A}|^2\cos 0 = |\vec{A}|^2$,
+  so $|\vec{A}| = \sqrt{\vec{A}\cdot\vec{A}}$.
+\end{example}
+
+%==========================================================
+\section{Orthogonality, Normalization, and Orthonormality}
+%==========================================================
+
+\begin{definition}[Orthogonality]
+  Two vectors $\ket{A}$ and $\ket{B}$ in an IPS are \emph{orthogonal} if
+  $\braket{A}{B} = 0$.  Orthogonal vectors are linearly independent.
+\end{definition}
+
+\begin{definition}[Normalization]
+  A vector $\ket{A}$ is \emph{normalized} (a unit vector) if
+  $\braket{A}{A} = 1$.
+\end{definition}
+
+\begin{definition}[Orthonormality]
+  A set of vectors $\{\ket{A}, \ket{B}, \ldots\}$ is \emph{orthonormal} if
+  \[
+    \braket{A}{B} = \delta_{AB} =
+    \begin{cases} 0 & A \neq B, \\ 1 & A = B. \end{cases}
+  \]
+\end{definition}
+
+%==========================================================
+\section{Topological Properties of Spaces}
+%==========================================================
+
+\begin{definition}[Topological Space]
+  A \emph{topological space} is the most general type of space: a set $X$
+  together with a \emph{topology} (a collection $\mathcal{T}$ of
+  ``open'' subsets of $X$) satisfying:
+  \begin{enumerate}
+    \item The union of \emph{any} collection of open sets is open.
+    \item The intersection of a \emph{finite} number of open sets is open.
+  \end{enumerate}
+  Examples: function spaces, polynomial spaces.
+\end{definition}
+
+Three key properties of topological spaces relevant to quantum mechanics:
+
+\begin{definition}[Connectedness]
+  A space is \emph{connected} if it cannot be split into two
+  non-overlapping, disjoint, non-empty open sets.
+\end{definition}
+
+\begin{definition}[Continuity]
+  A function $f$ between topological spaces is \emph{continuous} (smooth) if
+  small changes in the input produce only small changes in the output.
+\end{definition}
+
+\begin{definition}[Compactness]
+  A space is \emph{compact} if it is both bounded and closed, making it
+  well-behaved for convergence and containment.  For example, the open
+  interval $(a,b)$ is \emph{not} compact; the closed interval $[a,b]$
+  \emph{is} compact.
+\end{definition}
+
+%==========================================================
+\section{Unit Vectors and Normalization}
+%==========================================================
+
+\begin{definition}[Unit Vector]
+  A vector $\ket{\psi}$ with $\norm{\ket{\psi}} = 1$ is a \emph{unit vector}.
+\end{definition}
+
+\begin{proposition}[Normalization]
+  Any non-zero vector $\ket{\psi}$ can be converted to a unit vector by
+  dividing by its norm:
+  \[
+    \widehat{\psi} = \frac{1}{\norm{\ket{\psi}}}\ket{\psi}.
+  \]
+\end{proposition}
+
+\begin{example}
+  Let $\ket{\psi} = \begin{pmatrix}3\\1\end{pmatrix}$.
+  Then $\norm{\ket{\psi}} = \sqrt{9+1} = \sqrt{10}$, and
+  \[
+    \text{unit vector} = \frac{1}{\sqrt{10}}\begin{pmatrix}3\\1\end{pmatrix}
+    = \begin{pmatrix}3/\sqrt{10}\\1/\sqrt{10}\end{pmatrix},
+    \qquad
+    \left\|\begin{pmatrix}3/\sqrt{10}\\1/\sqrt{10}\end{pmatrix}\right\|
+    = \sqrt{\tfrac{9}{10}+\tfrac{1}{10}} = 1. \quad\checkmark
+  \]
+\end{example}
