@@ -4,6 +4,9 @@ This repository presents a rigorous and formally structured exposition of Linear
 
 The material progresses from algebraic foundations to Hilbert spaces and the operator framework underlying quantum state representations.
 
+## 📄 Preview
+👉 [Click here to view the compiled PDF](./main.pdf)
+
 ---
 
 ## Scope
