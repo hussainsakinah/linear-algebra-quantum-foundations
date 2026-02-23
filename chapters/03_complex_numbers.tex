@@ -1,0 +1,122 @@
+\chapter{Complex Numbers}
+
+Complex numbers are the native number system of quantum mechanics.  Every
+quantum amplitude is complex, and the modulus-squared gives a probability.
+
+%==========================================================
+\section{Definition and the Argand Plane}
+%==========================================================
+
+\begin{definition}[Imaginary Unit]
+  The \emph{imaginary unit} is the number $i$ satisfying $i^2 = -1$, i.e.\
+  $i = \sqrt{-1}$.
+\end{definition}
+
+\begin{definition}[Complex Number]
+  A \emph{complex number} is an expression of the form
+  \[
+    z = x + iy, \qquad x,y \in \R,
+  \]
+  where $x = \operatorname{Re}(z)$ is the \emph{real part} and
+  $y = \operatorname{Im}(z)$ is the \emph{imaginary part}.
+\end{definition}
+
+The set $\C$ of all complex numbers is visualised on the \textbf{Argand plane}
+(complex plane), with the real axis horizontal and the imaginary axis vertical.
+
+%==========================================================
+\section{Polar Form and Euler's Formula}
+%==========================================================
+
+\begin{definition}[Polar Form]
+  Any $z = x+iy \in \C$ can be written in \emph{polar form}
+  \[
+    z = r(\cos\theta + i\sin\theta),
+  \]
+  where $r = |z| = \sqrt{x^2+y^2}$ is the \emph{modulus} and
+  $\theta = \arg(z)$ is the \emph{argument}.
+\end{definition}
+
+\begin{theorem}[Euler's Formula]
+  \[
+    e^{i\theta} = \cos\theta + i\sin\theta.
+  \]
+  Hence the polar form simplifies to $z = r e^{i\theta}$.
+\end{theorem}
+
+\begin{corollary}[Euler's Identity]
+  Setting $\theta = \pi$:
+  \[
+    \boxed{e^{i\pi} + 1 = 0.}
+  \]
+\end{corollary}
+
+\begin{proposition}[Product of complex numbers]
+  If $z_1 = r_1 e^{i\theta_1}$ and $z_2 = r_2 e^{i\theta_2}$, then
+  \[
+    z_1 z_2 = r_1 r_2\, e^{i(\theta_1+\theta_2)}.
+  \]
+  Multiplication \emph{adds arguments} and \emph{multiplies moduli}.
+\end{proposition}
+
+%==========================================================
+\section{Complex Conjugate}
+%==========================================================
+
+\begin{definition}[Complex Conjugate]
+  The \emph{complex conjugate} of $z = x+iy$ is $z^* = x - iy$.
+  Geometrically, $z^*$ is the reflection of $z$ through the real axis
+  (angle $-\theta$).
+\end{definition}
+
+\begin{proposition}[Modulus via conjugate]
+  \[
+    z z^* = (x+iy)(x-iy) = x^2 + y^2 = |z|^2.
+  \]
+  Hence $\abs{z} = \sqrt{z z^*}$.
+\end{proposition}
+
+\begin{proof}
+  Using Euler's form:
+  \[
+    z z^* = (re^{i\theta})(re^{-i\theta}) = r^2 e^0 = r^2. \qed
+  \]
+\end{proof}
+
+\begin{remark}[Dual number system]
+  The pair $(z, z^*)$ forms a \emph{dual number system}: for every $z \in \C$
+  there exists a unique $z^*$, so that $\forall z\; \exists!\, z^*$.
+\end{remark}
+
+%==========================================================
+\section{Phase Factor}
+%==========================================================
+
+\begin{definition}[Phase Factor]
+  A \emph{phase factor} is a complex number of unit modulus:
+  \[
+    z = e^{i\theta} = \cos\theta + i\sin\theta, \qquad |z| = 1.
+  \]
+  Phase factors are ubiquitous in quantum mechanics: quantum states often
+  differ only by a phase, and this phase carries physical information (e.g.\
+  interference).
+\end{definition}
+
+\begin{remark}
+  In quantum calculations we work freely in $\C$, but the \emph{final answer
+  must be real} — probabilities and expectation values of Hermitian observables
+  are always real numbers.
+\end{remark}
+
+%==========================================================
+\section{Complex Vector Space}
+%==========================================================
+
+\begin{definition}[Complex Vector Space]
+  A \emph{complex vector space} $V(\C)$ is a vector space over the field
+  $\C$ of scalars.  This is the setting for quantum mechanics, where we take
+  $F = \C$.
+\end{definition}
+
+The complex conjugate of the scalar field $\C$ is $\C^*$; the dual vector
+space $V^*(\C^*)$ is the \emph{complex conjugate vector space}.
