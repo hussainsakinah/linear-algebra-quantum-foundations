@@ -4,8 +4,12 @@ This repository presents a rigorous and formally structured exposition of Linear
 
 The material progresses from algebraic foundations to Hilbert spaces and the operator framework underlying quantum state representations.
 
-## 📄 Preview
-👉 [Click here to view the compiled PDF](./main.pdf)
+| [📝 Handwritten Notes](./assets/Math_Notes_1.pdf) | Original handwritten lecture notes |
+
+| [📖 Compiled LaTeX PDF](./assets/main.pdf) | Clean typeset version compiled from source |
+
+> The handwritten notes were fully transcribed and formalised into 
+> structured LaTeX with proper definitions, theorems, and proofs.
 
 ---
 
