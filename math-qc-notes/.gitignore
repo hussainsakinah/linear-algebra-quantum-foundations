@@ -1,0 +1,33 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.idx
+*.ind
+*.ilg
+*.glo
+*.gls
+*.glg
+*.xdy
+*.acn
+*.acr
+*.alg
+*.ist
+*.pdf
+
+# Keep the compiled PDF if intentionally committed
+# !main.pdf
+
+# Editor files
+.DS_Store
+*.swp
+*~
+.vscode/

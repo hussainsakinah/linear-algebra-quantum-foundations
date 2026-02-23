@@ -1,0 +1,130 @@
+\chapter{Hilbert Spaces}
+\label{chap:hilbert}
+
+A \emph{Hilbert space} is the mathematical arena of quantum mechanics.  It
+combines the algebraic richness of an inner product space with the analytical
+property of completeness.
+
+%==========================================================
+\section{Cauchy Sequences and Convergence}
+%==========================================================
+
+\begin{definition}[Cauchy Sequence]
+  A sequence $\{x_n\}$ in a metric space $(X,d)$ (or normed space) is a
+  \emph{Cauchy sequence} if
+  \[
+    \forall\, \varepsilon > 0\;\; \exists\, N \in \N \;\text{ such that }\;
+    \forall\, m,n \geq N: \quad |x_m - x_n| < \varepsilon.
+  \]
+  Intuitively, consecutive terms cluster arbitrarily tightly as $n\to\infty$.
+\end{definition}
+
+\begin{example}
+  $\left\{\dfrac{1}{n}\right\}_{n=1}^{\infty} = 1,\tfrac{1}{2},\tfrac{1}{3},\ldots$
+  is Cauchy: for any $\varepsilon>0$ choose $N > 2/\varepsilon$, then for
+  $m,n\geq N$,
+  \[
+    |x_m-x_n| \leq |x_m| + |x_n| < \tfrac{2}{N} < \varepsilon.
+  \]
+\end{example}
+
+\begin{definition}[Convergent Sequence]
+  A sequence $\{x_n\}$ \emph{converges} to a limit $L$ if
+  \[
+    \lim_{n\to\infty} x_n = L, \quad\text{i.e.,}\quad
+    \forall\,\varepsilon>0\;\exists\,N:\; n\geq N \Rightarrow |x_n - L| < \varepsilon.
+  \]
+  Every convergent sequence is Cauchy, but the converse requires completeness.
+\end{definition}
+
+\begin{definition}[Dart-board analogy]
+  Think of convergence as a dart game: every throw lands strictly closer to
+  the bull's-eye than the previous throw.  The sequence of positions is Cauchy;
+  the bull's-eye is the limit.
+\end{definition}
+
+%==========================================================
+\section{Completeness}
+%==========================================================
+
+\begin{definition}[Complete Normed Space (Banach Space)]
+  A normed space $X$ is \emph{complete} if every Cauchy sequence in $X$
+  has a limit \emph{within $X$}.  A complete normed space is called a
+  \textbf{Banach space}.
+\end{definition}
+
+\begin{example}[Incompleteness of $\Q$]
+  Consider the sequence in $\Q$ defined by $x_n = \sum_{k=0}^{n}\dfrac{1}{k!}$.
+  It is Cauchy, but its limit $e = 2.71828\ldots$ is irrational, hence
+  $e \notin \Q$.  Therefore $(\Q, |\cdot|)$ is \emph{not} complete.
+\end{example}
+
+\begin{example}[Motivation from physics]
+  The sequence of hydrogen energy levels $E_n = -13.6\,\text{eV}/n^2$.
+  As $n\to\infty$, $E_n \to 0$.  Completeness requires that $0$ be in the
+  same space as the $E_n$, which it is (the continuum of unbound states).
+\end{example}
+
+%==========================================================
+\section{Hilbert Space}
+%==========================================================
+
+\begin{definition}[Hilbert Space]
+  A \textbf{Hilbert space} $\mathcal{H}$ is a \emph{complete inner product
+  space} (a complete IPS):
+  \[
+    \mathcal{H} = \underbrace{\text{IPS}}_{\text{properties}}
+                  + \underbrace{\text{completeness}}_{\text{every Cauchy seq.\ converges in }\mathcal{H}}.
+  \]
+\end{definition}
+
+\subsection{Quantum Mechanical Interpretation}
+
+\begin{enumerate}
+  \item \textbf{States.} The state of a quantum particle is represented by a
+        vector (ket) $\ket{\psi} \in \mathcal{H}$.
+  \item \textbf{Infinite dimension.} $\mathcal{H}$ is generically
+        infinite-dimensional, encoding the infinite complexity of states
+        available to a particle.  A particle's state is a superposition of
+        infinitely many basis states.
+  \item \textbf{Finite vs.\ infinite.} In quantum \emph{computing} (qubits,
+        spin), finite-dimensional Hilbert spaces suffice (2 or 3 dimensions).
+        In full quantum \emph{mechanics} (position, momentum, energy), we
+        need infinite-dimensional $\mathcal{H}$.
+  \item \textbf{Many particles.} For a system of many particles, the total
+        Hilbert space is the tensor product of individual Hilbert spaces:
+        \[
+          \mathcal{H}_{\text{total}} = \mathcal{H}_1 \otimes \mathcal{H}_2
+                                        \otimes \cdots
+        \]
+        The space grows very large, but each individual factor remains
+        infinite-dimensional.
+  \item \textbf{Physical examples.}
+        \begin{itemize}
+          \item Spin of an electron, polarisation of a photon
+                $\longrightarrow$ 2 or 3 dimensions.
+          \item Position, energy, momentum
+                $\longrightarrow$ $\infty$ dimensions.
+        \end{itemize}
+\end{enumerate}
+
+%==========================================================
+\section{$L^2$ Space}
+%==========================================================
+
+\begin{definition}[$L^2$ Space]
+  The space of \emph{square-integrable functions} is
+  \[
+    L^2(\R) = \left\{\, f : \R \to \C \;\middle|\;
+               \int_{-\infty}^{\infty} |f(x)|^2\,dx < \infty \,\right\}.
+  \]
+  This is an infinite-dimensional Hilbert space.  Functions in $L^2$ are the
+  natural setting for quantum wavefunctions.
+\end{definition}
+
+\begin{remark}
+  In $L^2$, the vector $\ket{v} = c_1\ket{e_1} + c_2\ket{e_2} + \cdots$
+  has basis elements $\ket{e_i}$ and coefficients $c_i$ that tell how much
+  each basis element contributes to reconstruct the original ``vector''
+  (function).  This is directly analogous to Fourier series coefficients.
+\end{remark}

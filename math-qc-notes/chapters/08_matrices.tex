@@ -1,0 +1,151 @@
+\chapter{Matrices}
+
+A matrix is a rectangular array of numbers.  In quantum mechanics, linear
+operators on finite-dimensional Hilbert spaces are represented by matrices.
+
+%==========================================================
+\section{Fundamental Definitions}
+%==========================================================
+
+\begin{definition}[Square Matrix]
+  An $n\times n$ matrix $A$ with elements $a_{ij}$ ($1\leq i,j\leq n$).
+\end{definition}
+
+\begin{definition}[Row Matrix (Bra)]
+  A $1\times n$ matrix:
+  $\bra{a} = \begin{bmatrix} a & b & c \end{bmatrix}$.
+\end{definition}
+
+\begin{definition}[Column Matrix (Ket)]
+  An $n\times 1$ matrix:
+  $\ket{a} = \begin{bmatrix} a \\ b \\ c \end{bmatrix}$.
+\end{definition}
+
+\begin{definition}[Identity Matrix]
+  The $n\times n$ identity matrix $I$ has $I_{ij}=\delta_{ij}$:
+  \[
+    I = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}.
+  \]
+  Note $AI = A = IA$ for any $n\times n$ matrix $A$.
+  In general $AB \neq BA$.
+\end{definition}
+
+\begin{definition}[Transpose]
+  The transpose $A^T$ of $A$ has $(A^T)_{ij} = A_{ji}$:
+  \[
+    A = \begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i \end{bmatrix}
+    \implies
+    A^T = \begin{bmatrix} a & d & g \\ b & e & h \\ c & f & i \end{bmatrix}.
+  \]
+\end{definition}
+
+\begin{definition}[Trace]
+  The \emph{trace} of a square matrix $A$ is the sum of its diagonal elements:
+  $\Tr(A) = \sum_i A_{ii}$.
+\end{definition}
+
+%==========================================================
+\section{Special Matrices}
+%==========================================================
+
+\subsection{Symmetric Matrix}
+
+\begin{definition}
+  $A$ is \emph{symmetric} if $A^T = A$.
+\end{definition}
+
+\begin{example}
+  $A = \begin{pmatrix}1&0\\0&1\end{pmatrix}$,
+  $A^T = \begin{pmatrix}1&0\\0&1\end{pmatrix} = A$. \checkmark
+\end{example}
+
+\subsection{Hermitian Matrix}
+
+\begin{definition}
+  $A$ is \emph{Hermitian} (self-adjoint) if $A^\dagger = A$, where
+  $A^\dagger = (\bar{A})^T$ is the Hermitian conjugate.
+\end{definition}
+
+\begin{remark}
+  The \emph{diagonal elements of a Hermitian matrix are always real}, since
+  $(A^\dagger)_{ii} = \bar{A}_{ii} = A_{ii} \Rightarrow A_{ii} \in \R$.
+\end{remark}
+
+\begin{example}
+  \[
+    A = \begin{pmatrix}3 & 1-i \\ 1+i & -2\end{pmatrix}, \quad
+    \bar{A} = \begin{pmatrix}3 & 1+i \\ 1-i & -2\end{pmatrix}, \quad
+    (\bar{A})^T = \begin{pmatrix}3 & 1-i \\ 1+i & -2\end{pmatrix} = A. \quad\checkmark
+  \]
+\end{example}
+
+\subsection{Orthogonal Matrix}
+
+\begin{definition}
+  $A$ is \emph{orthogonal} if $AA^T = I = A^TA$.
+  The rows (and columns) of $A$ form an orthonormal set.
+\end{definition}
+
+\begin{example}[Rotation matrix]
+  \[
+    A = \begin{pmatrix}\cos\alpha & \sin\alpha \\ -\sin\alpha & \cos\alpha\end{pmatrix},
+    \quad
+    A^T = \begin{pmatrix}\cos\alpha & -\sin\alpha \\ \sin\alpha & \cos\alpha\end{pmatrix},
+  \]
+  \[
+    AA^T = \begin{pmatrix}\cos^2\!\alpha+\sin^2\!\alpha & 0 \\ 0 & \sin^2\!\alpha+\cos^2\!\alpha\end{pmatrix}
+         = \begin{pmatrix}1&0\\0&1\end{pmatrix} = I. \quad\checkmark
+  \]
+\end{example}
+
+\begin{example}[$3\times 3$ orthogonal matrix]
+  \[
+    A = \begin{pmatrix}
+      1/3 & 2/3 & -2/3 \\
+      -2/3 & 2/3 & 1/3 \\
+      2/3 & 1/3 & 2/3
+    \end{pmatrix}, \qquad AA^T = I. \quad\checkmark
+  \]
+\end{example}
+
+\subsection{Unitary Matrix}
+
+\begin{definition}
+  $A$ is \emph{unitary} if $AA^\dagger = I = A^\dagger A$.
+  Unitary matrices are the complex generalisation of orthogonal matrices;
+  they preserve inner products.
+\end{definition}
+
+\begin{example}
+  \[
+    A = \frac{1}{\sqrt{2}}\begin{pmatrix}1 & 1 \\ i & -i\end{pmatrix},
+    \quad
+    A^\dagger = \frac{1}{\sqrt{2}}\begin{pmatrix}1 & -i \\ 1 & i\end{pmatrix},
+    \quad
+    AA^\dagger = I. \quad\checkmark
+  \]
+\end{example}
+
+%==========================================================
+\section{Checking if a Set Forms an Orthonormal Basis}
+%==========================================================
+
+\begin{proposition}
+  A set $\mathcal{A} = \{|b_i\rangle\}$ forms an orthonormal basis if and
+  only if the matrix $\left[\langle b_i|b_j\rangle\right]_{i,j} = I$.
+\end{proposition}
+
+\begin{proof}
+  In matrix form:
+  \[
+    \underbrace{\begin{bmatrix}\bra{b_1}\\\bra{b_2}\\\vdots\\\bra{b_n}\end{bmatrix}}_{n\times 1}
+    \underbrace{\begin{bmatrix}\ket{b_1} & \ket{b_2} & \cdots & \ket{b_n}\end{bmatrix}}_{1\times n}
+    = \begin{bmatrix}
+        \braket{b_1}{b_1} & \braket{b_1}{b_2} & \cdots \\
+        \braket{b_2}{b_1} & \braket{b_2}{b_2} & \cdots \\
+        \vdots & & \ddots
+      \end{bmatrix} = I. \qed
+  \]
+  This is equivalent to checking: (i) normalization $\braket{b_i}{b_i}=1$,
+  and (ii) orthogonality $A^\dagger A = I$.
+\end{proof}

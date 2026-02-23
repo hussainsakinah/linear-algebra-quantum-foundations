@@ -1,0 +1,189 @@
+\chapter{Algebraic Structures}
+
+This chapter develops the hierarchy of algebraic structures — from the most
+primitive (groupoids) to the richest (fields) — that underpin the mathematics
+of quantum computing.  Every structure is a non-empty set equipped with one or
+more binary operations satisfying progressively stronger axioms.
+
+%==========================================================
+\section{Binary Operations and Closure}
+%==========================================================
+
+\begin{definition}[Binary Operation]
+  Let $R$ be a non-empty set.  A \emph{binary operation} $*$ on $R$ is a map
+  \[
+    * : R \times R \longrightarrow R, \qquad (a,b) \mapsto a * b.
+  \]
+  The operation is said to satisfy the \emph{closure property} if
+  \[
+    \forall\, a, b \in R \implies a * b \in R.
+  \]
+\end{definition}
+
+\begin{remark}
+  An algebraic structure $(R,\, *_1,\, *_2, \ldots)$ consists of a non-empty
+  set $R$ together with one or more binary operations.  Closure is automatic
+  by definition of a binary operation, but it is often stated explicitly for
+  emphasis.
+\end{remark}
+
+\begin{example}
+  Consider the integers $\Z$ under addition.  For any $x \in \Z$ we have
+  $1 \cdot x = x \in \Z$, confirming closure.  The step-by-step justification
+  that $2x + (y - x) = x + y$ uses commutativity, associativity, the
+  distributive property, and the multiplicative identity:
+  \begin{align*}
+    2x + (y - x)
+      &= 2x + (y + (-x))    && \text{(additive inverse notation)} \\
+      &= 2x + ((-x) + y)    && \text{(commutativity of $+$)} \\
+      &= (2x + (-x)) + y    && \text{(associativity of $+$)} \\
+      &= (2x + (-1)x) + y   && \text{(notation: $-x = (-1)x$)} \\
+      &= (2 + (-1))x + y    && \text{(distributive property)} \\
+      &= 1x + y             && \text{(closure in $\Z$)} \\
+      &= x + y.             && \text{(multiplicative identity)} \qed
+  \end{align*}
+\end{example}
+
+%==========================================================
+\section{The Algebraic Hierarchy}
+%==========================================================
+
+The following definitions build on one another; each adds one axiom to the
+previous structure.
+
+\begin{definition}[Groupoid]
+  A non-empty set $R$ with a binary operation $*$ satisfying closure is called
+  a \emph{groupoid}.
+\end{definition}
+
+\begin{definition}[Semigroup]
+  A groupoid $(R, *)$ that additionally satisfies
+  \begin{itemize}
+    \item \textbf{Associativity:} $\forall\, a,b,c \in R,\quad (a*b)*c = a*(b*c)$
+  \end{itemize}
+  is called a \emph{semigroup}.
+\end{definition}
+
+\begin{definition}[Monoid]
+  A semigroup $(R,*)$ that additionally contains an \emph{identity element}
+  $e \in R$ satisfying
+  \[
+    a \mathbin{\square} e = e \mathbin{\square} a = a \quad \forall\, a \in R
+  \]
+  is called a \emph{monoid}.
+\end{definition}
+
+\begin{definition}[Group]
+  A monoid $(R,*)$ in which every element has an \emph{inverse}, i.e.,
+  \[
+    \forall\, a \in R\; \exists\, a\inv \in R \text{ such that }
+    a * a\inv = a\inv * a = e,
+  \]
+  is called a \emph{group}.
+\end{definition}
+
+\begin{definition}[Abelian (Commutative) Group]
+  A group $(R,*)$ satisfying
+  \begin{itemize}
+    \item \textbf{Commutativity:} $\forall\, a,b \in R,\quad a*b = b*a$
+  \end{itemize}
+  is called an \emph{Abelian group}.
+\end{definition}
+
+%==========================================================
+\section{Rings}
+%==========================================================
+
+\begin{definition}[Ring]
+  A triple $(R, +, \cdot)$ is a \emph{ring} if $(R,+)$ is an Abelian group,
+  multiplication $\cdot$ is associative and closed, and the distributive laws
+  hold:
+  \begin{align*}
+    (a + b)\cdot c &= a\cdot c + b\cdot c, \\
+    a \cdot (b + c) &= a\cdot b + a\cdot c.
+  \end{align*}
+  Concretely, the twelve axioms are:
+  \begin{enumerate}
+    \item \textbf{Closure under $+$:} $a,b\in R \Rightarrow a+b\in R$.
+    \item \textbf{Associativity of $+$:} $(a+b)+c = a+(b+c)$.
+    \item \textbf{Additive identity:} $\exists\, 0\in R$ s.t.\ $a+0=0+a=a$.
+    \item \textbf{Additive inverse:} $\forall\, a\in R\;\exists\, {-a}\in R$ s.t.\ $a+(-a)=0$.
+    \item \textbf{Commutativity of $+$:} $a+b=b+a$.
+    \item \textbf{Closure under $\cdot$:} $a,b\in R \Rightarrow a\cdot b\in R$.
+    \item \textbf{Associativity of $\cdot$:} $(a\cdot b)\cdot c = a\cdot(b\cdot c)$.
+    \item \textbf{Multiplicative identity} (if present): $\exists\, 1\in R$ s.t.\ $a\cdot 1=1\cdot a=a$.
+    \item \textbf{Multiplicative inverse} (if present): $\forall\, a\neq 0\;\exists\, a\inv$ s.t.\ $a\cdot a\inv=1$.
+    \item \textbf{Commutativity of $\cdot$} (if present): $a\cdot b = b\cdot a$.
+    \item \textbf{Distributivity:} $(a+b)c = ac+bc$ and $a(b+c)=ab+ac$.
+    \item \textbf{Non-triviality:} $0 \neq 1$ (excludes the trivial ring; also forces uniqueness of identity and inverses).
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Ring with Unity]
+  A ring satisfying axiom~8 (multiplicative identity) is called a
+  \emph{ring with unity}.
+\end{definition}
+
+\begin{definition}[Commutative Ring with Unity]
+  A ring with unity that also satisfies axiom~10 (commutativity of $\cdot$)
+  is called a \emph{commutative ring with unity}.
+\end{definition}
+
+%==========================================================
+\section{Fields}
+%==========================================================
+
+\begin{definition}[Field]
+  A \emph{field} $(F, +, \cdot)$ is a set $F$ with two binary operations
+  satisfying all twelve ring axioms (including multiplicative identity,
+  multiplicative inverses for non-zero elements, and commutativity of
+  multiplication).  Equivalently:
+  \[
+    \text{Field} = \text{Abelian group under } {+}
+                   \;\cup\; \text{Abelian group under } {\cdot}
+                   \;\cup\; \text{Distributivity}
+                   \;\cup\; (0 \neq 1).
+  \]
+\end{definition}
+
+\begin{example}
+  The classical fields are:
+  \[
+    \R \;(\mathbb{R}\setminus\{0\}),\quad
+    \C \;(\mathbb{C}\setminus\{0\}),\quad
+    \Q \;(\mathbb{Q}\setminus\{0\}).
+  \]
+\end{example}
+
+\subsection{Field Extensions}
+
+\begin{definition}[Field Extension]
+  Let $F$ and $K$ be fields with $F \subseteq K$.  Then $K$ is an
+  \emph{extension field} of $F$, written $K/F$.
+\end{definition}
+
+\begin{example}[$\Q(\alpha)$]
+  Since $\sqrt{2} \notin \Q$, the smallest field containing both $\Q$ and
+  $\sqrt{2}$ is
+  \[
+    \Q(\sqrt{2}) = \{\, a + b\sqrt{2} : a,b \in \Q \,\}.
+  \]
+  This is an \emph{algebraic extension} of $\Q$ and forms an Abelian group
+  under both $+$ and $\cdot$, satisfies distributivity, and has $0 \neq 1$.
+\end{example}
+
+\begin{definition}[Extended Field $F(x)$]
+  Given a field $F$, the field of \emph{rational functions} over $F$ is
+  \[
+    F(x) = \left\{\, \frac{f(x)}{g(x)} \;\middle|\;
+            f, g \text{ polynomials with coefficients in } F,\; g \neq 0 \,\right\}.
+  \]
+  In particular, $\R(i) = \C$ (extended reals via the imaginary unit
+  $i = \sqrt{-1}$) and $\C(x)$ consists of rational functions with complex
+  coefficients, e.g.\ $\dfrac{ix+3}{3-ix^3}$.
+\end{definition}
+
+\begin{remark}
+  There are infinitely many extension fields of $\Q$, one for each algebraic
+  (or transcendental) element adjoined.
+\end{remark}
